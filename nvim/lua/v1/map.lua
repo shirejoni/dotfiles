@@ -1,7 +1,5 @@
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-
 vim.keymap.set("n", "<leader><CR>", function()
 	vim.cmd("so")
 end)
@@ -27,6 +25,7 @@ vim.keymap.set("i", "jk", "<Esc>")
 -- for saveing files
 vim.keymap.set("n", "<C-s>", vim.cmd.update)
 vim.keymap.set("i", "<C-s>", vim.cmd.update)
+vim.keymap.set("n", "<leader>s", vim.cmd.update)
 
 -- greatest remap ever
 vim.keymap.set("x", "p", [["_dP]])
@@ -36,24 +35,22 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- for iterate between quickfix
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+-- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+-- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 
 -- for better window navigation
-vim.keymap.set("n", "<leader>wj", "<C-w>j")
-vim.keymap.set("n", "<leader>wh", "<C-w>h")
-vim.keymap.set("n", "<leader>wk", "<C-w>k")
-vim.keymap.set("n", "<leader>wl", "<C-w>l")
+vim.keymap.set("n", "<leader>wj", ":TmuxNavigateDown<cr>")
+vim.keymap.set("n", "<leader>wl", ":TmuxNavigateRight<cr>")
+vim.keymap.set("n", "<leader>wk", ":TmuxNavigateUp<cr>")
+vim.keymap.set("n", "<leader>wh", ":TmuxNavigateLeft<cr>")
 vim.keymap.set("n", "<leader>wq", "<C-w>q")
 vim.keymap.set("n", "<leader>wo", "<C-w>o")
 vim.keymap.set("n", "<leader>wv", "<C-w>v")
 vim.keymap.set("n", "<leader>ws", "<C-w>s")
 
-vim.keymap.set("n", "<leader>s", vim.cmd.update)
-
 -- file explore
 -- vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
-vim.keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
+vim.keymap.set("n", "<leader>ee", "<cmd>NvimTreeFocus<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
 vim.keymap.set("n", "<A-1>", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
 vim.keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" }) -- toggle file explorer on current file
 vim.keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
@@ -85,6 +82,14 @@ vim.keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { de
 vim.keymap.set("n", "<leader>sr", require("telescope.builtin").resume, { desc = "[S]earch [R]resume" })
 
 vim.keymap.set({ "n", "i" }, "<A-i>", vim.lsp.buf.format)
+
+vim.keymap.set("n", "<leader>n", ":Neogit<CR>")
+vim.keymap.set(
+	"n",
+	"<leader>ci",
+	[[<cmd>lua require'telescope'.extensions.goimpl.goimpl{}<CR>]],
+	{ noremap = true, silent = true }
+)
 
 -- init_selection = "<A-p>", -- set to `false` to disable one of the mappings
 -- node_incremental = "<A-p>",

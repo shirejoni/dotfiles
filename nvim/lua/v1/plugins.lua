@@ -21,6 +21,7 @@ require("lazy").setup({
 			vim.opt.background = "dark"
 		end,
 	},
+	{ "christoomey/vim-tmux-navigator" },
 	-- Fuzzy Finder (files, lsp, etc)
 	{
 		"nvim-telescope/telescope.nvim",
@@ -46,6 +47,18 @@ require("lazy").setup({
 		"stevearc/dressing.nvim",
 		opts = {},
 	},
+	{
+		"sindrets/diffview.nvim",
+	},
+	{
+		"Pocco81/auto-save.nvim",
+		config = function()
+			require("auto-save").setup({
+				-- your config goes here
+				-- or just leave it empty :)
+			})
+		end,
+	},
 	{ import = "v1.configs.cmp" },
 	{ import = "v1.configs.lspconfig" },
 	{ import = "v1.configs.lsp" },
@@ -53,12 +66,26 @@ require("lazy").setup({
 	{ import = "v1.configs.treesitter" },
 	{ import = "v1.configs.nvim-tree" },
 	{ import = "v1.configs.gitsigns" },
+	{ import = "v1.configs.neogit" },
+	{ import = "v1.configs.toggleterm" },
 	{
 		"numToStr/Comment.nvim",
 		opts = {
 			-- add any options here
 		},
 		lazy = false,
+	},
+	{
+		"edolphin-ydf/goimpl.nvim",
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-lua/popup.nvim" },
+			{ "nvim-telescope/telescope.nvim" },
+			{ "nvim-treesitter/nvim-treesitter" },
+		},
+		config = function()
+			require("telescope").load_extension("goimpl")
+		end,
 	},
 })
 

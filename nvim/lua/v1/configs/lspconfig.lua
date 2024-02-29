@@ -23,11 +23,18 @@ return {
 			opts.desc = "Show LSP references"
 			keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
 
+			opts.desc = "Show LSP incomming call"
+			keymap.set("n", "gp", "<cmd>Telescope lsp_incoming_calls<CR>", opts) -- show definition, references
+
+			opts.desc = "Show LSP out going call"
+			keymap.set("n", "go", "<cmd>Telescope lsp_outgoing_calls<CR>", opts) -- show definition, references
+
 			opts.desc = "Go to declaration"
 			keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
 
 			opts.desc = "Show LSP definitions"
 			keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
+			keymap.set("n", "gwd", "<C-w>v<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
 
 			opts.desc = "Show LSP implementations"
 			keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
